@@ -1,5 +1,6 @@
 # Backend-Internship-Assignment
-# Nudge Creations Api Docs
+
+# Nudge Creations Api Docs [ Task 2️⃣]
 
 ## **Object Data Model**
 
@@ -82,9 +83,9 @@ The Nudge object has the following properties:
 
    ```json
    {
-   	"id": "abc123",
+   	 "id": "abc123",
      "title": "Updated Nudge",
-   	"event": "Farewell",
+   	 "event": "Farewell",
      "image": "https://example.com/updated-image.jpg",
      "time": "2023-06-01T10:00:00",
      "description": "This is an updated nudge.",
