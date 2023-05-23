@@ -81,7 +81,6 @@ The Nudge object has the following properties:
    **Payload:**
 
    ```json
-   jsonCopy code
    {
    	"id": "abc123",
      "title": "Updated Nudge",
@@ -100,7 +99,7 @@ The Nudge object has the following properties:
    ```json
    {
      "id": "abc123",
-     "title": "Updated
+     "title": "Updated"
    }
    ```
 
