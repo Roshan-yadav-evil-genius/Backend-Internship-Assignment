@@ -37,7 +37,7 @@ class Event(models.Model):
     rigor_rank = models.IntegerField("Rigor Rank")
     attendees = models.CharField("Attendees", max_length=50)
 
-    created_at=models.DateTimeField("Created At", auto_now=False, auto_now_add=False)
+    created_at=models.DateTimeField("Created At", auto_now=False, editable=False, auto_now_add=True)
 
     def __str__(self) -> str:
         return f"{self.user} > {self.name}"

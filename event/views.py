@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import RetrieveUpdateDestroyAPIView,ListAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView,ListAPIView,ListCreateAPIView
 from .Serializer import EventSerializer,EventRUDSerializer
 from .models import Event
 from rest_framework.pagination import LimitOffsetPagination,PageNumberPagination
@@ -15,7 +15,7 @@ class CustomPagination(LimitOffsetPagination):
     limit_query_param = 'limit'
     offset_query_param = 'page'
 
-class V3App(ListAPIView):
+class V3App(ListCreateAPIView):
     serializer_class=EventSerializer
     pagination_class = CustomPagination
     ordering_fields = ['created_at']
@@ -32,6 +32,7 @@ class V3App(ListAPIView):
         if event_type:
             queryset = queryset.filter(event_type=event_type)
         return queryset
+    
     
 class V3AppCrud(RetrieveUpdateDestroyAPIView):
     serializer_class=EventRUDSerializer
