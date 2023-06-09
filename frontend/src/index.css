@@ -1,0 +1,164 @@
+.App {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 50px;
+  gap: 50px;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+form {
+  display: grid;
+  row-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+}
+
+input,
+textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+label,
+input {
+  display: block;
+}
+
+
+code,
+pre {
+  height: 100%;
+}
+
+h3 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+h5,p{
+  margin: 0;
+  padding: 0;
+}
+.data{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.event {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width:350px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 2px 2px 10px #ccc;
+  margin: 20px;
+}
+.event .tagline{
+  font-size: 12px;
+  color: rgb(128, 128, 128);
+}
+.event .id{
+  background-color: rgb(241, 56, 109);
+  color: white;
+  text-align: center;
+  width: min-content;
+  font-size: 12px;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.event .avatar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.event img{
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.operations{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
+}
+.operations button{
+  width: min-content;
+  padding: 10px 15px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(176, 77, 77);
+  color: white;
+  cursor: pointer;
+
+  margin: 5px 0;
+  &:hover{
+      background-color: rgb(213, 46, 46);
+  }
+}
+.mylinks{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.mylinks a{
+  text-decoration: none;
+
+  font-weight: 600;
+  font-size: 14px;
+  background-color: rgb(241, 56, 109);
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+
+}
+.mylinks .active{
+  color: rgb(241, 56, 109);
+  background-color: white;
+
+}
+.keyvalue{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  text-align: left;
+}
+.keyvalue .key{
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.info{
+  width: 100%;
+}
+.sub_btn{
+  background-color: rgb(3, 91, 58);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 10px;
+  &:hover{
+    background-color: rgb(4, 121, 78);
+  }
+}

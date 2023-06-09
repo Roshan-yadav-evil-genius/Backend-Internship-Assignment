@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- and it's easy to individually load additional languages -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Event Testing Assignment</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 50px;
+            gap: 50px;
+            height: 80vh;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        form {
+            display: grid;
+            row-gap: 5px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        input,
+        textarea {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        label,
+        input {
+            display: block;
+        }
+
+        .data {
+            overflow-y: scroll;
+            height: 80vh;
+        }
+
+        code,
+        pre {
+            height: 100%;
+        }
+
+        h3 {
+            text-align: center;
+        }
+        h5,p{
+            margin: 0;
+            padding: 0;
+        }
+        .event {
+            display: flex;
+            gap: 10px;
+            width: 250px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 2px 2px 10px #ccc;
+        }
+        .event .tagline{
+            font-size: 12px;
+            color: rgb(128, 128, 128);
+        }
+        .event .id{
+            background-color: rgb(241, 56, 109);
+            color: white;
+            text-align: center;
+            width: min-content;
+            font-size: 12px;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        .event .avatar{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .event img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .operations{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-end;
+        }
+        .operations button{
+            width: min-content;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(176, 77, 77);
+            color: white;
+            cursor: pointer;
+            &:hover{
+                background-color: rgb(213, 46, 46);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="data">
+        <div class="event">
+            <div class="avatar">
+                <p class="id">1</p>
+                <img src="https://s.yimg.com/os/creatr-uploaded-images/2021-04/8db67950-a14a-11eb-9fef-08945cfcba69" alt="">
+            </div>
+            <div class="info">
+                <h5>Roshan yaadv</h5>
+                <p class="tagline">Never Forget Anyone Misbehaviour</p>
+                <div class="operations">
+                    <button >Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+
+        <div class="retrive">
+            <a href="single.html">Single Event</a>
+        </div>
+        <h3>Create New Event</h3>
+        <form id="submit-form" action="http://example.com/api/events" method="POST">
+            <label for="id">id:</label>
+            <input type="text" id="id" name="id" required>
+            <label for="event_type">Event Type:</label>
+            <input type="text" id="event_type" name="event_type" required>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="tagline">Tagline:</label>
+            <input type="text" id="tagline" name="tagline" required>
+
+            <label for="schedule">Schedule:</label>
+            <input type="datetime-local" id="schedule" name="schedule" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="file">Image File:</label>
+            <input type="file" id="file" name="file" required>
+
+            <label for="user">User</label>
+            <input type="text" id="user" name="user" required>
+
+            <label for="Category">Category</label>
+            <input type="text" id="Category" name="Category" required>
+
+            <label for="Subcategory">Subcategory</label>
+            <input type="text" id="Subcategory" name="Subcategory" required>
+
+            <label for="rigor_rank">Rigor Rank:</label>
+            <input type="number" id="rigor_rank" name="rigor_rank" required>
+
+            <label for="attendees">Attendees:</label>
+            <input type="text" id="attendees" name="attendees" required><br>
+
+            <input type="submit" value="Add Event">
+        </form>
+    </div>
+    <script>
+        document.getElementById("submit-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            console.log(formData.get("id"))
+            fetch("http://127.0.0.1:8000/api/v3/app/events",{method:"POST",body:formData}).then((res) => res.json()).then((data) => {
+                document.getElementsByTagName("code")[0].innerHTML = JSON.stringify(data, null, 4);
+                hljs.highlightAll();
+                console.log(data)
+            }
+            );            
+        });
+        
+
+        fetch("http://127.0.0.1:8000/api/v3/app/events").then((res) => res.json()).then((data) => {
+            document.getElementsByTagName("code")[0].innerHTML = JSON.stringify(data, null, 4);
+            hljs.highlightAll();
+            console.log(data)
+        });
+    </script>
+</body>
+
+</html>
