@@ -65,7 +65,10 @@ class V3AppCrud(APIView):
 
     def get(self,request,id=None):
         queryset=Event.objects.raw(f"SELECT * FROM event_event WHERE id = {id}")
-        return Response(EventSerializer(queryset,many=True).data,status=status.HTTP_200_OK)
+        if queryset:
+            return Response(EventSerializer(queryset,many=True).data,status=status.HTTP_200_OK)
+        else:
+            return Response({"message":"No data found"},status=status.HTTP_404_NOT_FOUND)
     
     def put(self,request,id=None):
         event_data = request.data
